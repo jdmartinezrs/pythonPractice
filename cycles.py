@@ -89,7 +89,30 @@ for i in range (2,50,3):
     print("number",i)
 """
 
-
+'''
 for i in range (20):
     print(i)
+'''
+
+while True:
+
+    print('Escribe la opción deseada')
+    print("1: Say Hi")
+    print("2: Salir")
+
+    respuesta = int(input('Your answer here: '))
+
+    if respuesta == 1:
+        print("Big shout out")
+    elif respuesta == 2:
+        break
+
+print('Going out')
+
+
+
+
+
+
+
 
