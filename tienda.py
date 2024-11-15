@@ -6,10 +6,17 @@ print("***          WELCOME TO THE           ***")
 print("***            PET'S SHOP             ***")
 print("*****************************************")
 print("")
-num_dogs = 10
-num_cats = 19
-num_birds = 7
-total_animals = num_dogs + num_cats + num_birds
+
+#Inventory
+
+inventory= {"dogs": 10, "cats": 7, "birds": 7}
+
+total_animals = 0
+for val in inventory.values():
+    total_animals += val
+print(f"Currently we have{total_animals} in our store")
+
+
 
 print('Please insert your name')
 name = input()
@@ -36,9 +43,11 @@ def show_menu():
     
 
 def show_inventory():
-        print ("Currently we have:")
-        print ( num_dogs, "dogs", num_cats, "cats", num_birds,"birds")
-        print ("We have in total ",total_animals,"animals")
+        print ("*******   INVENTORY   *******")
+        for key, value in inventory.items():
+            print(f"  {key}:{value}")       
+        print (f"Currently we have {total_animals} animals in our store")
+        print("")
 
 
 def buy_an_animal():
@@ -53,15 +62,21 @@ def buy_an_animal():
         elif animal == "v":
             print(f"Your shopping cart has: {shopping_cart}")
             continue
+        if animal not in inventory:
+            print(f"We dont have {animal} at this time")
 
-        if animal not in shopping_cart:
+        elif inventory[animal]== 0:
+            print(f"we are sorry, we have just left the last {animal}")
+        elif animal not in shopping_cart:
             shopping_cart.append(animal)
+
         else:
             print("You’ve already added this animal to your cart.")
 
     print("The content of your cart is:")
     for animal in shopping_cart:
         print("  ", animal)
+        inventory[animal] -= 1
 
     date = datetime.now()
     compras.append((name, shopping_cart, date))
@@ -84,7 +99,8 @@ while True:
         break
 
 print('You have left the application')
-    
+
+
 
 
 
